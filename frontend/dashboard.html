@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+
+<div class="top-bar">
+    <h2>Expense Tracker</h2>
+
+    <div>
+        <button onclick="toggleMode()">🌙</button>
+        <br>
+    
+        <button onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Add Expense -->
+    <div class="card">
+        <h3>Add Expense</h3>
+        <input type="number" id="amount" placeholder="Amount">
+        <select id="category" onchange="checkOther()">
+    <option value="">Select Category</option>
+    <option value="Food">Food</option>
+    <option value="Travel">Travel</option>
+    <option value="Shopping">Shopping</option>
+    <option value="Bills">Bills</option>
+    <option value="Ticket">Ticket</option>
+    <option value="Other">Other</option>
+</select>
+
+<input type="text" id="otherCategory" placeholder="Enter category" style="display:none;">
+        <input type="date" id="date">
+        <button onclick="addExpense()">Add</button>
+    </div>
+
+    <!-- Filter -->
+    <div class="card">
+        <h3>Filter</h3>
+
+        <select id="monthFilter" onchange="loadExpenses()">
+            <option value="">All Months</option>
+            <option value="0">Jan</option>
+            <option value="1">Feb</option>
+            <option value="2">Mar</option>
+            <option value="3">Apr</option>
+            <option value="4">May</option>
+            <option value="5">Jun</option>
+            <option value="6">Jul</option>
+            <option value="7">Aug</option>
+            <option value="8">Sep</option>
+            <option value="9">Oct</option>
+            <option value="10">Nov</option>
+            <option value="11">Dec</option>
+        </select>
+
+        <input type="number" id="yearFilter" placeholder="Year" onchange="loadExpenses()">
+
+        <h4>Total: ₹<span id="totalAmount">0</span></h4>
+    </div>
+
+    <!-- List -->
+    <div class="card">
+        <h3>Expenses</h3>
+        <ul id="expenseList"></ul>
+    </div>
+    
+
+    <!-- Chart -->
+    <div class="card">
+        <h3>Chart</h3>
+        <canvas id="chart"></canvas>
+        <div class="card report-card">Hello</div>
+
+        <!-- Report Generator -->
+<div class="card">
+    <h3>Generate Report</h3>
+
+    <select id="reportType">
+        <option value="week">Weekly Report</option>
+        <option value="month">Monthly Report</option>
+        <option value="year">Yearly Report</option>
+    </select>
+
+    <button onclick="generateReport()">Generate</button>
+
+    <div id="reportResult" style="margin: top 15px;"></div>
+</div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="dashboard.js"></script>
+
+</body>
+</html>
