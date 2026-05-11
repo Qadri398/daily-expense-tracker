@@ -7,14 +7,20 @@ app = Flask(__name__)
 CORS(app)
 
 # 🔗 DATABASE CONNECTION
-db = mysql.connector.connect(
-    host="mysql.railway.internal",
-    user="root",
-    password="qosgOXMwvtDbrOwhkQffcHmsLMdGBKlN",
-    database="railway",
-    port=int(3306)
-)
+import os
+from urllib.parse import urlparse
 
+mysql_url = "mysql://root:qosgOXMwvtDbrOwhkQffcHmsLMdGBKlN@yamabiko.proxy.rlwy.net:55066/railway"
+
+url = urlparse(mysql_url)
+
+db = mysql.connector.connect(
+    host=url.hostname,
+    user=url.username,
+    password=url.password,
+    database=url.path.replace("/", ""),
+    port=url.port
+)
 cursor = db.cursor()
 
 cursor.execute("""
