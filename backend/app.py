@@ -8,13 +8,34 @@ CORS(app)
 
 # 🔗 DATABASE CONNECTION
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",        # default XAMPP user
-    password="Rel@cs933",        # agar password hai toh yaha likho
-    database="expense_tracker"
+    host="roundhouse.proxy.rlwy.net",
+    user="root",
+    password="abc123xyz",
+    database="railway",
+    port=12345
 )
 
 cursor = db.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE,
+    password VARCHAR(50)
+)
+""")
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS expenses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    amount INT,
+    category VARCHAR(50),
+    date DATE
+)
+""")
+
+db.commit()
 
 # 🔐 LOGIN API
 @app.route('/login', methods=['POST'])
