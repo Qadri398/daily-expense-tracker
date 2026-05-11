@@ -44,7 +44,7 @@ if (date > today) {
         return;
     }
 
-    await fetch("https://daily-expense-tracker.onrender.com/add", {
+    await fetch("https://daily-expense-tracker-pfw0.onrender.com/add", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -73,7 +73,7 @@ function formatDate(dateStr) {
 
 // 📥 LOAD + FILTER
 async function loadExpenses() {
-    let res = await fetch(`https://daily-expense-tracker.onrender.com/expenses/${user_id}`);
+    let res = await fetch(`https://daily-expense-tracker-pfw0.onrender.com/expenses/${user_id}`);
     let expenses = await res.json();
 
     let monthFilter = document.getElementById("monthFilter").value;
@@ -121,7 +121,7 @@ async function loadExpenses() {
 
 // ❌ DELETE
 async function deleteExpense(id) {
-    await fetch(`https://daily-expense-tracker.onrender.com/delete/${id}`, {
+    await fetch(`https://daily-expense-tracker-pfw0.onrender.com/delete/${id}`, {
         method: "DELETE"
     });
 
@@ -178,7 +178,7 @@ async function generateReport() {
 
     let type = document.getElementById("reportType").value;
 
-    let res = await fetch(`https://daily-expense-tracker.onrender.com/report/${user_id}/${type}`);
+    let res = await fetch(`https://daily-expense-tracker-pfw0.onrender.com/report/${user_id}/${type}`);
 
     let data = await res.json();
 

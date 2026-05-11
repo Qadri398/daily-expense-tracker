@@ -8,7 +8,7 @@ async function login() {
     }
 
     try {
-        let res = await fetch("https://daily-expense-tracker.onrender.com/login", {
+        let res = await fetch("https://daily-expense-tracker-pfw0.onrender.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -39,7 +39,7 @@ async function signup() {
         return;
     }
 
-    let res = await fetch("https://daily-expense-tracker.onrender.com/signup", {
+    let res = await fetch("https://daily-expense-tracker-pfw0.onrender.com/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
