@@ -8,7 +8,7 @@ async function login() {
     }
 
     try {
-        let res = await fetch("http://127.0.0.1:5000/login", {
+        let res = await fetch("https://daily-expense-tracker.onrender.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -39,7 +39,7 @@ async function signup() {
         return;
     }
 
-    let res = await fetch("http://127.0.0.1:5000/signup", {
+    let res = await fetch("https://daily-expense-tracker.onrender.com/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
