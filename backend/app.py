@@ -8,11 +8,11 @@ CORS(app)
 
 # 🔗 DATABASE CONNECTION
 db = mysql.connector.connect(
-    host="roundhouse.proxy.rlwy.net",
+    host="mysql.railway.internal",
     user="root",
-    password="abc123xyz",
+    password="qosgOXMwvtDbrOwhkQffcHmsLMdGBKlN",
     database="railway",
-    port=12345
+    port=int(3306)
 )
 
 cursor = db.cursor()
