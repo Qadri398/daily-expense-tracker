@@ -20,7 +20,7 @@ async function login() {
 
         if (data.status === "success") {
             localStorage.setItem("user_id", data.user_id);
-            window.location.href = "welcome.html";
+            window.location.href = "dashboard.html";
         } else {
             document.getElementById("error").innerText = "Wrong login!";
         }
