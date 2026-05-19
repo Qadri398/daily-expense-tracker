@@ -210,6 +210,43 @@ async function generateReport() {
 
     result.innerHTML = html;
 }
+// 📄 EXPORT PDF
+async function downloadPDF() {
+
+    let res = await fetch(`https://daily-expense-tracker-pfw0.onrender.com/expenses/${user_id}`);
+
+    let expenses = await res.json();
+
+    const { jsPDF } = window.jspdf;
+
+    let doc = new jsPDF();
+
+    doc.setFontSize(18);
+    doc.text("Expense Report", 20, 20);
+
+    let y = 40;
+
+    expenses.forEach((e, index) => {
+
+        doc.setFontSize(12);
+
+        doc.text(
+            `${index + 1}. ₹${e.amount} | ${e.category} | ${e.date}`,
+            20,
+            y
+        );
+
+        y += 10;
+
+        // new page
+        if (y > 270) {
+            doc.addPage();
+            y = 20;
+        }
+    });
+
+    doc.save("Expense_Report.pdf");
+}
 
 
 // Initial load
