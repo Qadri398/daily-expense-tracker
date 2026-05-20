@@ -259,12 +259,14 @@ async function downloadPDF() {
 
     // TABLE DATA
     doc.setTextColor(0, 0, 0);
+    
+    doc.setFont("helvetica", "normal");
 
     expenses.forEach((e, index) => {
 
         doc.text(String(index + 1), 15, y);
 
-        doc.text(`₹${e.amount}`, 40, y);
+        doc.text("₹" + e.amount.toString(), 40, y);
 
         doc.text(e.category, 90, y);
 
